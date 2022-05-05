@@ -1,0 +1,17 @@
+name: Release
+
+on:
+  repository_dispatch:
+    types: [intercode-release]
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Update image tag
+        run: echo FROM neinteractiveliterature/intercode:${{ github.event.client_payload.tag }} > Dockerfile
+      - name: Commit
+        run: |
+          git commit -am "Deploy Intercode ${{ github.event.client_payload.tag }}"
+          git push
