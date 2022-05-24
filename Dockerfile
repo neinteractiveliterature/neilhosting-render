@@ -1,1 +1,1 @@
-FROM neinteractiveliterature/intercode:v2.6.1
+FROM neinteractiveliterature/intercode:v3.0.0
